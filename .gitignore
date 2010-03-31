@@ -1,0 +1,8 @@
+debug
+release
+storage
+Makefile*
+QtGas.ncb
+QtGas.pro.user
+QtGas.vcproj
+QtGas.vcproj.SX64PC.Administrator.user
