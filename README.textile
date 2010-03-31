@@ -1,0 +1,72 @@
+h1. QtGas
+
+h2. Description
+
+QtGas is a mobile application designed for touch screen devices to track gas mileage
+and vehicle maintenance.
+
+h2. Supported platforms
+
+At the moment it was only tested on a Windows Mobile 6.5.3 phone and I've got plans
+to add support for other platforms supported by Qt framework. Please let me know
+if you are interested in trying it out on some other platform.
+
+h2. Requirements
+
+h3. Windows Mobile
+
+Visual Visual C++ Runtime for your device.
+
+h3. Windows (for development)
+
+_// TOWRITE_
+
+h2. Installation
+
+The application is distributed as an executable and you can get it from
+http://github.com/fgrehm/QtGas/downloads
+
+h2. Building
+
+h3. Building Qt framework
+
+<code>
+// TOWRITE
+</code>
+
+h3. Building QtGas
+
+<code>
+// TOWRITE
+</code>
+
+h2. Issue tracker
+
+http://github.com/fgrehm/QtGas/issues
+
+h2. License
+
+<code>
+(The MIT License)
+
+Copyright (c) 2010 Fábio Rehm
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</code>
