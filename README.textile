@@ -44,7 +44,7 @@ h3. Building QtGas
 
 h2. Issue tracker
 
-http://github.com/fgrehm/QtGas/issues
+"http://github.com/fgrehm/QtGas/issues":http://github.com/fgrehm/QtGas/issues
 
 h2. License
 
