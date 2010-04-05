@@ -146,12 +146,12 @@ Rectangle {
                      Text {
                          text: (type == 'gas' ? units+' L' : description)
                          font.pixelSize: 20
-                         width: 180;
+                         width: 150
                          color: 'gray'
                      }
                      Text {
                          text: (type == 'gas' ? distancePerUnit + ' Km/L' : '')
-                         width: 100
+                         width: 130
                          font.pixelSize: 20
                          color: 'gray'
                      }

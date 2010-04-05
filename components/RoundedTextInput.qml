@@ -48,6 +48,8 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
+            if (!enabled) return;
+
             if (container.state == 'input')
                 container.state = '';
             else {

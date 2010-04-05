@@ -95,7 +95,12 @@ Rectangle {
              label: 'Odometer (Km)'
              width: parent.width
              maximumLength: 6
-             value: '54460'
+             onValueChanged: {
+                 if (!parent.hasValue(odometer)) return;
+
+                 if (parent.hasValue(litres))
+                    distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
+             }
          }
 
          RoundedTextInput {
@@ -107,9 +112,14 @@ Rectangle {
                  if (!parent.hasValue(litres)) return;
 
                  if (parent.hasValue(cost))
-                     costPerLitre.value = cost.floatValue() / litres.floatValue();
+                     costPerLitre.value = (cost.floatValue() / litres.floatValue()).toFixed(2);
                  else if (parent.hasValue(costPerLitre))
-                     cost.value = litres.floatValue() * costPerLitre.floatValue();
+                     cost.value = (litres.floatValue() * costPerLitre.floatValue()).toFixed(2);
+
+                 if (!parent.hasValue(odometer)) return;
+
+                 if (parent.hasValue(odometer))
+                    distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
              }
          }
 
@@ -122,9 +132,9 @@ Rectangle {
                  if (!parent.hasValue(cost)) return;
 
                  if (parent.hasValue(litres))
-                     costPerLitre.value = cost.floatValue() / litres.floatValue();
+                     costPerLitre.value = (cost.floatValue() / litres.floatValue()).toFixed(2);
                  else if (parent.hasValue(costPerLitre))
-                     litres.value = cost.floatValue() / costPerLitre.floatValue();
+                     litres.value = (cost.floatValue() / costPerLitre.floatValue()).toFixed(3);
              }
          }
 
@@ -137,10 +147,17 @@ Rectangle {
                  if (!parent.hasValue(costPerLitre)) return;
 
                  if (parent.hasValue(litres))
-                     cost.value = litres.floatValue() * costPerLitre.floatValue();
+                     cost.value = (litres.floatValue() * costPerLitre.floatValue()).toFixed(2);
                  else if (parent.hasValue(cost))
-                     litres.value = cost.floatValue() / costPerLitre.floatValue();
+                     litres.value = (cost.floatValue() / costPerLitre.floatValue()).toFixed(3);
              }
+         }
+
+         RoundedTextInput {
+             id: distancePerUnit
+             label: 'Km / Litre'
+             width: parent.width
+             enabled: false
          }
      }
 }

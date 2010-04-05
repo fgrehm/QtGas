@@ -40,7 +40,7 @@ function setup(p) {
 function createFillUp(params){
     params.type = 'gas';
     params.date = new Date();
-    params.distancePerUnit = (params.odometer - Track.carOdometer()) / params.units;
+    params.distancePerUnit = ((params.odometer - Track.carOdometer()) / params.units).toFixed(3);
 
     var track = new Track(params);
 
