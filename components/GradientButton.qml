@@ -17,11 +17,11 @@ Rectangle {
     gradient: Gradient {
         GradientStop {
             position: 0.0
-            color: if (mr.pressed) { "#605B56" } else { "#71695F" }
+            color: if (mr.pressed) { Qt.darker("#616569") } else { "#616569" }
         }
         GradientStop {
             position: 0.7
-            color: if (mr.pressed) { "#191308" } else { "#2A1E10" }
+            color: if (mr.pressed) { Qt.darker("#1E2329") } else { "#1E2329" }
         }
     }
 

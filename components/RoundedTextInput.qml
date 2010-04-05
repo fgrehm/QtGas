@@ -80,7 +80,6 @@ Rectangle {
         font.pixelSize: inputFontSize
         font.bold: true
         color: "gray"
-        //text: container.value
     }
 
     TextInput {
