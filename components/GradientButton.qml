@@ -5,6 +5,7 @@ Rectangle {
 
     signal clicked
     property string text: "Button"
+    property alias font: txtItem.font
 
     smooth: true
     width: txtItem.width + 21
@@ -34,7 +35,8 @@ Rectangle {
         id: txtItem
         text: container.text
         anchors.centerIn: container
-        font.pixelSize: 35
+        font.family: fontFamily
+        font.pixelSize: buttonFontSize
         font.bold: true
         color: "white"
     }

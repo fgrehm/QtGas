@@ -2,7 +2,10 @@ debug
 release
 storage
 Makefile*
+vc90.pdb
 QtGas.ncb
 QtGas.pro.user
 QtGas.vcproj
+QtGas.sln
+QtGas.suo
 QtGas.vcproj.SX64PC.Administrator.user

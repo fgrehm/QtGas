@@ -10,18 +10,23 @@ TARGET = QtGas
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    dialog.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    dialog.h
 
 RESOURCES += \
     resources.qrc
 
 OTHER_FILES += \
-    qml/main.qml \
-    qml/GradientBar.qml \
-    qml/GradientButton.qml \
-    scripts/database.js \
     images/service.png \
-    images/gas.png
+    images/gas.png \
+    scripts/QtGas.js\
+    QtGas.qml \
+    components/GradientBar.qml \
+    components/GradientButton.qml \
+    views/FillUpForm.qml \
+    components/RoundedTextInput.qml \
+    scripts/persistence.min.js \
+    components/Dialog.qml

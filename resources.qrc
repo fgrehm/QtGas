@@ -1,10 +1,15 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/main.qml</file>
-        <file>qml/GradientBar.qml</file>
-        <file>qml/GradientButton.qml</file>
-        <file>scripts/database.js</file>
         <file>images/gas.png</file>
         <file>images/service.png</file>
+        <file>scripts/QtGas.js</file>
+        <file>QtGas.qml</file>
+        <file>components/GradientBar.qml</file>
+        <file>components/GradientButton.qml</file>
+        <file>views/FillUpForm.qml</file>
+        <file>components/RoundedTextInput.qml</file>
+        <file>scripts/persistence.min.js</file>
+        <file>scripts/model.js</file>
+        <file>components/Dialog.qml</file>
     </qresource>
 </RCC>

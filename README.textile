@@ -1,34 +1,37 @@
 h1. QtGas
 
+
 h2. Description
 
-QtGas is a mobile application designed for touch screen devices to track gas mileage
-and vehicle maintenance.
+QtGas is a mobile application for tracking gas mileage and vehicle maintenance. It was inspired by "GasCubby":http://www.appcubby.com/gas/index.html for iPhone OS and will target all "Qt framework":http://qt.nokia.com/ supported platforms.
+
 
 h2. Supported platforms
 
-At the moment it was only tested on a Windows Mobile 6.5.3 phone and I've got plans
-to add support for other platforms supported by Qt framework. Please let me know
-if you are interested in trying it out on some other platform.
+At the moment it was only tested on a Windows Mobile 6.5.3 WVGA (a hacked HTC Blackstone) phone and I've got plans to add support for other platforms supported by Qt framework. Please let me know if you are interested in trying it out on some other platform.
+
+Please note that I'll target touchscreen devices first and later will think about adding support for non-touchscreen ones.
+
 
 h2. Requirements
 
 h3. Windows Mobile
 
-Visual Visual C++ Runtime for your device.
+Visual Visual C++ Runtime.
 
-h3. Windows (for development)
-
-<code>
-// TOWRITE
-</code>
 
 h2. Installation
 
-The application is distributed as an executable and you can get it from
-http://github.com/fgrehm/QtGas/downloads
+h3. Windows Mobile
 
-h2. Building
+The application is distributed as an executable and soon you'll be able to download a "proof of concept" version from "here":http://github.com/fgrehm/QtGas/downloads.
+
+
+h2. Contributing
+
+QtGas makes use of "Qt's Declarative UI":http://doc.trolltech.org/4.7-snapshot/declarativeui.html which will be available from 4.7 version of Qt framework. Although there is a "Technology Preview":http://qt.nokia.com/developer/qt-qtcreator-prerelease avaiable, it was tested with lastest sources from "Gitorious 4.7 branch":http://qt.gitorious.org/qt. Soon I'll try compiling it with the technology preview to see if it works.
+
+You'll also need Microsoft Visual Studio, Microsoft Windows Mobile 6.5 SDK, ...
 
 h3. Building Qt framework
 
