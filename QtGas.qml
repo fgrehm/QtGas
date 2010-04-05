@@ -13,7 +13,7 @@ Rectangle {
         QtGas.setup(Persistence.persistence);
 
         myModel.clear();
-        QtGas.Track.all().each(null, function (t) {
+        QtGas.Track.all().order('date', false).each(null, function (t) {
             myModel.append(t);
         });
     }
