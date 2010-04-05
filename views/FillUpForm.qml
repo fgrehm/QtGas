@@ -10,7 +10,16 @@ Rectangle {
     y: parent.height
     color: 'lightyellow'
     z: 10
-    property var odometer: odometer
+
+    function resetValues() {
+        odometer.value = QtGas.Track.carOdometer();
+
+        distancePerUnit.value =
+        litres.value =
+        costPerLitre.value =
+        cost.value = '';
+    }
+
 
     states: [
         State {
@@ -107,7 +116,6 @@ Rectangle {
              id: litres
              label: 'Litres'
              width: parent.width
-             value: '50'
              onValueChanged: {
                  if (!parent.hasValue(litres)) return;
 
@@ -118,8 +126,7 @@ Rectangle {
 
                  if (!parent.hasValue(odometer)) return;
 
-                 if (parent.hasValue(odometer))
-                    distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
+                 distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
              }
          }
 
@@ -127,7 +134,6 @@ Rectangle {
              id: cost
              label: 'Total Cost'
              width: parent.width
-             value: '100'
              onValueChanged: {
                  if (!parent.hasValue(cost)) return;
 
@@ -142,7 +148,6 @@ Rectangle {
              id: costPerLitre
              label: 'Cost / Litre'
              width: parent.width
-             value: '2'
              onValueChanged: {
                  if (!parent.hasValue(costPerLitre)) return;
 

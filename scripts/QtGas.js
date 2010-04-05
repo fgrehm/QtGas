@@ -4,6 +4,13 @@ var persistence;
 
 var Track;
 
+// This method appears to be broken on WM, at least on 6.5
+Number.prototype.toFixed = function(n) {
+    var factor = Math.pow(10, n);
+    return Math.round(this * factor)/factor;
+}
+
+
 function setup(p) {
     persistence = p;
 
@@ -30,7 +37,10 @@ function setup(p) {
         var odometer;
         persistence.transaction(function(tx){
             tx.executeSql('SELECT MAX(odometer) AS odometer FROM Track', null, function(result){
-                odometer = result[0].odometer;
+                if (result[0].odometer)
+                    odometer = parseInt(result[0].odometer);
+                else
+                    odometer = 0;
             });
         });
         return odometer;

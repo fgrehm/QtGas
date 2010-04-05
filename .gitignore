@@ -2,7 +2,7 @@ debug
 release
 storage
 Makefile*
-vc90.pdb
+vc90.*
 QtGas.ncb
 QtGas.pro.user
 QtGas.vcproj

@@ -55,8 +55,8 @@ Rectangle {
             GradientButton {
                 text: "Register fill up"
                 onClicked: {
-                    fillUpForm.state = 'display'
-                    fillUpForm.odometer.value = QtGas.Track.carOdometer();
+                    fillUpForm.resetValues();
+                    fillUpForm.state = 'display';
                 }
             }
 
@@ -71,37 +71,6 @@ Rectangle {
     FillUpForm {
         id: fillUpForm
     }
-
-//    Dialog {
-//        id: dialog
-//        anchors.top: listview1.top
-//        height: 200
-//        width: parent.width
-//        z: 99
-//
-//        Row {
-//            Column {
-//                x: 2
-//                y: 2
-//                spacing: 5
-//                Text {
-//                    text: "Amount: "
-//                    width: 50
-//                    font.pixelSize: 20
-//                    font.bold: true
-//                }
-//                RoundedTextInput {
-//                    text: 'sss'
-//                }
-//            }
-//            GradientButton {
-//                y: 100
-//                text: "Service"
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                onClicked: function(){QtGas.newService(input.text);input.focus=false;dialog.close();}()
-//            }
-//        }
-//    }
 
     ListView {
         id: listview1
