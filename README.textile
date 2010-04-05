@@ -5,10 +5,16 @@ h2. Description
 
 QtGas is a mobile application for tracking gas mileage and vehicle maintenance. It was inspired by "GasCubby":http://www.appcubby.com/gas/index.html for iPhone OS and will target all "Qt framework":http://qt.nokia.com/ supported platforms.
 
+h3. Usage
+
+Fire up the application and start adding fill up records. At this stage the application assumes you have a brand new car, so it will calculate MPG from an odometer of 0 Km. Because of that just add a dummy initial record with your current odometer.
+
+If you want to clean up your information, just delete 'storage' folder that was created on the same path as the executable.
+
 
 h2. Supported platforms
 
-At the moment it was only tested on a Windows Mobile 6.5.3 WVGA (a hacked HTC Blackstone) phone and I've got plans to add support for other platforms supported by Qt framework. Please let me know if you are interested in trying it out on some other platform.
+At the moment it was only tested on Windows XP and a Windows Mobile 6.5.3 WVGA (a hacked HTC Blackstone) phone and I've got plans to add support for Maemo and Symbian. Let me know if you are interested in trying it out on some other platform.
 
 Please note that I'll target touchscreen devices first and later will think about adding support for non-touchscreen ones.
 
@@ -24,7 +30,7 @@ h2. Installation
 
 h3. Windows Mobile
 
-The application is distributed as an executable and soon you'll be able to download a "proof of concept" version from "here":http://github.com/fgrehm/QtGas/downloads.
+The application is distributed as an executable and soon you'll be able to download an initial version from "here":http://github.com/fgrehm/QtGas/downloads.
 
 
 h2. Contributing
