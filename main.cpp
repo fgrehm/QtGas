@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
     app.setAutoSipEnabled(true);
 
     Dialog dialog;
+    dialog.showFullScreen();
     return dialog.exec();
 
 

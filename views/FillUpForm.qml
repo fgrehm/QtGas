@@ -81,88 +81,97 @@ Rectangle {
          }
      }
 
-     Column {
-         id: layout
-         spacing: 25
-
+     Flickable {
          anchors.top: topBar.bottom
          anchors.topMargin: 10
+
          anchors.bottom: parent.bottom
 
-         anchors.left: parent.left
-         anchors.leftMargin: 10
+         clip: true
 
-         anchors.right: parent.right
-         anchors.rightMargin: 10
+         width: form.width
+         contentWidth: form.width
+         contentHeight: layout.height
 
-         function hasValue(field) {
-             return field.value != '' && field.floatValue() > 0;
-         }
+         Column {
+             id: layout
+             spacing: 25
 
-         RoundedTextInput {
-             id: odometer
-             label: 'Odometer (Km)'
-             width: parent.width
-             maximumLength: 6
-             onValueChanged: {
-                 if (!parent.hasValue(odometer)) return;
+             anchors.left: parent.left
+             anchors.leftMargin: 10
 
-                 if (parent.hasValue(litres))
-                    distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
+             anchors.right: parent.right
+             anchors.rightMargin: 10
+
+             function hasValue(field) {
+                 return field.value != '' && field.floatValue() > 0;
              }
-         }
 
-         RoundedTextInput {
-             id: litres
-             label: 'Litres'
-             width: parent.width
-             onValueChanged: {
-                 if (!parent.hasValue(litres)) return;
+             RoundedTextInput {
+                 id: odometer
+                 label: 'Odometer (Km)'
+                 width: parent.width
+                 maximumLength: 6
+                 onValueChanged: {
+                     if (!parent.hasValue(odometer)) return;
 
-                 if (parent.hasValue(cost))
-                     costPerLitre.value = (cost.floatValue() / litres.floatValue()).toFixed(2);
-                 else if (parent.hasValue(costPerLitre))
-                     cost.value = (litres.floatValue() * costPerLitre.floatValue()).toFixed(2);
-
-                 if (!parent.hasValue(odometer)) return;
-
-                 distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
+                     if (parent.hasValue(litres))
+                        distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
+                 }
              }
-         }
 
-         RoundedTextInput {
-             id: cost
-             label: 'Total Cost'
-             width: parent.width
-             onValueChanged: {
-                 if (!parent.hasValue(cost)) return;
+             RoundedTextInput {
+                 id: litres
+                 label: 'Litres'
+                 width: parent.width
+                 onValueChanged: {
+                     if (!parent.hasValue(litres)) return;
 
-                 if (parent.hasValue(litres))
-                     costPerLitre.value = (cost.floatValue() / litres.floatValue()).toFixed(2);
-                 else if (parent.hasValue(costPerLitre))
-                     litres.value = (cost.floatValue() / costPerLitre.floatValue()).toFixed(3);
+                     if (parent.hasValue(cost))
+                         costPerLitre.value = (cost.floatValue() / litres.floatValue()).toFixed(2);
+                     else if (parent.hasValue(costPerLitre))
+                         cost.value = (litres.floatValue() * costPerLitre.floatValue()).toFixed(2);
+
+                     if (!parent.hasValue(odometer)) return;
+
+                     distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
+                 }
              }
-         }
 
-         RoundedTextInput {
-             id: costPerLitre
-             label: 'Cost / Litre'
-             width: parent.width
-             onValueChanged: {
-                 if (!parent.hasValue(costPerLitre)) return;
+             RoundedTextInput {
+                 id: cost
+                 label: 'Total Cost'
+                 width: parent.width
+                 onValueChanged: {
+                     if (!parent.hasValue(cost)) return;
 
-                 if (parent.hasValue(litres))
-                     cost.value = (litres.floatValue() * costPerLitre.floatValue()).toFixed(2);
-                 else if (parent.hasValue(cost))
-                     litres.value = (cost.floatValue() / costPerLitre.floatValue()).toFixed(3);
+                     if (parent.hasValue(litres))
+                         costPerLitre.value = (cost.floatValue() / litres.floatValue()).toFixed(2);
+                     else if (parent.hasValue(costPerLitre))
+                         litres.value = (cost.floatValue() / costPerLitre.floatValue()).toFixed(3);
+                 }
              }
-         }
 
-         RoundedTextInput {
-             id: distancePerUnit
-             label: 'Km / Litre'
-             width: parent.width
-             enabled: false
+             RoundedTextInput {
+                 id: costPerLitre
+                 label: 'Cost / Litre'
+                 width: parent.width
+                 onValueChanged: {
+                     if (!parent.hasValue(costPerLitre)) return;
+
+                     if (parent.hasValue(litres))
+                         cost.value = (litres.floatValue() * costPerLitre.floatValue()).toFixed(2);
+                     else if (parent.hasValue(cost))
+                         litres.value = (cost.floatValue() / costPerLitre.floatValue()).toFixed(3);
+                 }
+             }
+
+             RoundedTextInput {
+                 id: distancePerUnit
+                 label: 'Km / Litre'
+                 width: parent.width
+                 enabled: false
+             }
          }
      }
 }

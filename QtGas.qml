@@ -6,8 +6,8 @@ import '/scripts/QtGas.js' as QtGas
 
 Rectangle {
     id: appContainer
-    width: 480
-    height: 660
+    width: parent ? parent.width : 480
+    height: parent ? parent.height : 800
 
     Component.onCompleted: {
         QtGas.setup(Persistence.persistence);
@@ -34,6 +34,17 @@ Rectangle {
             color: "white"
             anchors.centerIn: parent
         }
+
+        GradientButton {
+            text: "Close"
+            font.pixelSize: headingButtonFontSize
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            anchors.rightMargin: 5
+            onClicked: {
+                mainDialog.close();
+            }
+        }
     }
 
     GradientBar {
@@ -54,7 +65,7 @@ Rectangle {
 
             GradientButton {
                 text: "Register fill up"
-                onClicked: {
+                onClicked: {                    
                     fillUpForm.resetValues();
                     fillUpForm.state = 'display';
                 }
@@ -104,7 +115,7 @@ Rectangle {
                      Text {
                          text: '<b>'+Qt.formatDateTime(date, 'MMM d, yyyy')+'</b>'
                          font.pixelSize: 23
-                         width: 280;
+                         width: wrapper.width - 200
                      }
                      Text {
                          text: '<b>$ '+cost+'</b>'
@@ -115,7 +126,7 @@ Rectangle {
                      Text {
                          text: (type == 'gas' ? units+' L' : description)
                          font.pixelSize: 20
-                         width: 150
+                         width: wrapper.width - 330
                          color: 'gray'
                      }
                      Text {
