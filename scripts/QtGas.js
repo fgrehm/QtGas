@@ -2,7 +2,7 @@
 
 var persistence;
 
-var Track;
+var Track, Car, currentCar;
 
 // This method appears to be broken on WM, at least on 6.5
 Number.prototype.toFixed = function(n) {
@@ -10,8 +10,7 @@ Number.prototype.toFixed = function(n) {
     return Math.round(this * factor)/factor;
 }
 
-
-function setup(p) {
+function setup(p, callback) {
     persistence = p;
 
     persistence.connect('qtgasdb', 'Local QtGas data', 5 * 1024 * 1024, "1.0");
@@ -31,31 +30,42 @@ function setup(p) {
         description: 'TEXT'
     });
 
+    Car = persistence.define('Car', {
+        odometer: 'NUMBER'
+    });
+
+    Car.hasMany('tracks', Track, 'car');
+
     persistence.schemaSync();
 
-    Track.carOdometer = function() {
-        var odometer;
-        persistence.transaction(function(tx){
-            tx.executeSql('SELECT MAX(odometer) AS odometer FROM Track', null, function(result){
-                if (result[0].odometer)
-                    odometer = parseInt(result[0].odometer);
-                else
-                    odometer = 0;
-            });
-        });
-        return odometer;
-    }
+    Car.all().one(null, function(c){
+        currentCar = c;
+        if (currentCar == null) {
+            currentCar = new Car({odometer: 0});
+            persistence.add(currentCar);
+            persistence.flush(null, callback);
+        } else {
+            callback();
+        }
+    });
+}
+
+function setCurrentCarOdometer(odometer, flush) {
+    currentCar.odometer = odometer;
+    persistence.add(currentCar);
+    if (flush)
+        persistence.flush();
 }
 
 function createFillUp(params){
     params.type = 'gas';
     params.date = new Date();
-    params.distancePerUnit = ((params.odometer - Track.carOdometer()) / params.units).toFixed(3);
+    params.distancePerUnit = ((params.odometer - currentCar.odometer) / params.units).toFixed(3);
+
+    setCurrentCarOdometer(params.odometer, false);
 
     var track = new Track(params);
-
-    persistence.add(track);
-    persistence.flush();
+    currentCar.tracks.add(track);
 
     return track;
 }

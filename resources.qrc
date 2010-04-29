@@ -11,5 +11,6 @@
         <file>scripts/persistence.min.js</file>
         <file>scripts/model.js</file>
         <file>components/Dialog.qml</file>
+        <file>views/CarForm.qml</file>
     </qresource>
 </RCC>

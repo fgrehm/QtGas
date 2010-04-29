@@ -1,4 +1,4 @@
-import Qt 4.6
+import Qt 4.7
 import "../components"
 import '/scripts/persistence.min.js' as Persistence
 import '/scripts/QtGas.js' as QtGas
@@ -12,7 +12,7 @@ Rectangle {
     z: 10
 
     function resetValues() {
-        odometer.value = QtGas.Track.carOdometer();
+        odometer.value = QtGas.currentCar.odometer;
 
         distancePerUnit.value =
         litres.value =
@@ -75,8 +75,10 @@ Rectangle {
                      units: litres.floatValue(),
                      costPerUnit: costPerLitre.floatValue()
                  });
-                 myModel.insert(0, track);
-                 form.state = '';
+                 Persistence.persistence.flush(null, function(){
+                     form.state = '';
+                     myModel.insert(0, track);
+                 });
              }
          }
      }
@@ -116,7 +118,7 @@ Rectangle {
                      if (!parent.hasValue(odometer)) return;
 
                      if (parent.hasValue(litres))
-                        distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
+                        distancePerUnit.value = ((odometer.floatValue() - QtGas.currentCar.odometer) / litres.floatValue()).toFixed(3);
                  }
              }
 
@@ -134,7 +136,7 @@ Rectangle {
 
                      if (!parent.hasValue(odometer)) return;
 
-                     distancePerUnit.value = ((odometer.floatValue() - QtGas.Track.carOdometer()) / litres.floatValue()).toFixed(3);
+                     distancePerUnit.value = ((odometer.floatValue() - QtGas.currentCar.odometer) / litres.floatValue()).toFixed(3);
                  }
              }
 

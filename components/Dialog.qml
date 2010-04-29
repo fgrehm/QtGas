@@ -1,19 +1,45 @@
-import Qt 4.6
+import Qt 4.7
 
-Rectangle {
-    id: page
+Item {
+    id: dialog
+
+    property alias contentWidth: content.width
+    property alias contentHeight: content.height
+    default property alias chidren: content.children
+
+    anchors.fill: parent
+
     function close() {
-        page.closed();
-        page.opacity = 0;
+        dialog.closed();
+        dialog.opacity = 0;
     }
     function show() {
-        page.opacity = 1;
+        dialog.opacity = 1;
     }
     signal closed();
-    color: "lightyellow"
-    border.width: 1
+
     opacity: 0
     Behavior on opacity {
         NumberAnimation { duration: 500 }
+    }
+
+    Rectangle {
+        id: overlay
+        width: dialog.parent.width
+        height: dialog.parent.height
+
+        color: 'black'
+        opacity: 0.5
+        z: dialog.z - 1
+    }
+
+    Rectangle {
+        id: content
+        width: 200
+        height: 200
+        anchors.centerIn: parent
+        color: "lightyellow"
+        border.width: 1
+        z: dialog.z + 1
     }
 }

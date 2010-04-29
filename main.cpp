@@ -13,7 +13,14 @@ int main(int argc, char *argv[])
     app.setAutoSipEnabled(true);
 
     Dialog dialog;
+
+#if defined(Q_WS_S60) || defined(Q_WS_MAEMO_5) || defined(Q_WS_WINCE)
     dialog.showFullScreen();
+#else
+    dialog.setFixedWidth(480);
+    dialog.setFixedHeight(800);
+#endif
+
     return dialog.exec();
 
 

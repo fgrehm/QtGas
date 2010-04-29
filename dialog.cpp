@@ -20,10 +20,10 @@ Dialog::Dialog()
     view->engine()->setOfflineStoragePath(QDir::currentPath() + "/storage");
 
     view->rootContext()->setContextProperty("fontFamily", "DejaVuSans");
-    view->rootContext()->setContextProperty("inputFontSize", 28);
-    view->rootContext()->setContextProperty("buttonFontSize", 35);
-    view->rootContext()->setContextProperty("headingButtonFontSize", 25);
-    view->rootContext()->setContextProperty("headingFontSize", 42);
+    view->rootContext()->setContextProperty("inputFontSize", 26);
+    view->rootContext()->setContextProperty("buttonFontSize", 33);
+    view->rootContext()->setContextProperty("headingButtonFontSize", 23);
+    view->rootContext()->setContextProperty("headingFontSize", 40);
     view->rootContext()->setContextProperty("mainDialog", this);
 
     view->setSource(QUrl("qrc:/QtGas.qml"));

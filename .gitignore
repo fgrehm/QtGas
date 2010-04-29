@@ -1,11 +1,14 @@
 debug
 release
+build
 storage
 Makefile*
 vc90.*
 QtGas.ncb
 QtGas.pro.user
-QtGas.vcproj
+QtGas.vcproj*
 QtGas.sln
 QtGas.suo
-QtGas.vcproj.SX64PC.Administrator.user
+moc_*
+qrc_*
+*.o

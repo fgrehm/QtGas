@@ -1,4 +1,4 @@
-import Qt 4.6
+import Qt 4.7
 import "components"
 import "views"
 import '/scripts/persistence.min.js' as Persistence
@@ -9,12 +9,21 @@ Rectangle {
     width: parent ? parent.width : 480
     height: parent ? parent.height : 800
 
-    Component.onCompleted: {
-        QtGas.setup(Persistence.persistence);
-
+    function reload() {
         myModel.clear();
-        QtGas.Track.all().order('date', false).each(null, function (t) {
+        QtGas.currentCar.tracks.order('date', false).each(null, function (t) {
             myModel.append(t);
+        });
+    }
+
+    Component.onCompleted: {
+        QtGas.setup(Persistence.persistence, function() {
+            if (QtGas.currentCar.odometer != 0) {
+                reload();
+            } else {
+                carForm.odometer = QtGas.currentCar.odometer;
+                carForm.show();
+            }
         });
     }
 
@@ -41,9 +50,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 5
-            onClicked: {
-                mainDialog.close();
-            }
+            onClicked: mainDialog.close();
         }
     }
 
@@ -83,6 +90,10 @@ Rectangle {
         id: fillUpForm
     }
 
+    CarForm {
+        id: carForm
+    }
+
     ListView {
         id: listview1
         clip: true
@@ -92,6 +103,13 @@ Rectangle {
         model: myModel
         delegate: delegate
         spacing: 0
+
+        Rectangle {
+            color: "black"
+            opacity: 0.4; anchors.right: listview1.right; anchors.rightMargin:2; width: 6
+            y: listview1.visibleArea.yPosition * listview1.height
+            height: listview1.visibleArea.heightRatio * listview1.height
+        }
     }
 
     Component {
@@ -100,6 +118,7 @@ Rectangle {
          id: wrapper
          width: appContainer.width-border.width*2
          height: display.height+display.y*2
+         border.color: "darkgray"
          Row {
              id: display
              x: 18; y: 5
@@ -126,12 +145,12 @@ Rectangle {
                      Text {
                          text: (type == 'gas' ? units+' L' : description)
                          font.pixelSize: 20
-                         width: wrapper.width - 330
+                         width: wrapper.width - 340
                          color: 'gray'
                      }
                      Text {
                          text: (type == 'gas' ? distancePerUnit + ' Km/L' : '')
-                         width: 130
+                         width: 140
                          font.pixelSize: 20
                          color: 'gray'
                      }
@@ -143,7 +162,6 @@ Rectangle {
                  }
              }
          }
-         border.color: "darkgray"
      }
     }
 
