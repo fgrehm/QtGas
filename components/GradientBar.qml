@@ -9,4 +9,6 @@ Rectangle {
     }
 
     color: '#53b401';
+
+    width: parent.width
 }

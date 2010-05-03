@@ -13,25 +13,17 @@ Dialog::Dialog()
 
     setWindowTitle(tr("QtGas"));
 
-//    QScrollArea *scrollArea = new QScrollArea(this);
-
     view = new QDeclarativeView(this);
 
     view->engine()->setOfflineStoragePath(QDir::currentPath() + "/storage");
-
-    view->rootContext()->setContextProperty("fontFamily", "DejaVuSans");
-    view->rootContext()->setContextProperty("inputFontSize", 26);
-    view->rootContext()->setContextProperty("buttonFontSize", 33);
-    view->rootContext()->setContextProperty("headingButtonFontSize", 23);
-    view->rootContext()->setContextProperty("headingFontSize", 40);
     view->rootContext()->setContextProperty("mainDialog", this);
 
     // TODO: Check if this works
-//#if !defined(DEBUG)
-//    view->setSource(QUrl("qrc:/QtGas.qml"));
-//#else
+#if !defined(DEBUG)
+    view->setSource(QUrl("qrc:/QtGas.qml"));
+#else
     view->setSource(QUrl("QtGas.qml"));
-//#endif
+#endif
 
     view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 

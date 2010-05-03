@@ -40,33 +40,23 @@ Rectangle {
      GradientBar {
          id: topBar
          height: 81
-         width: appContainer.width
          anchors.top: parent.top
 
-         GradientButton {
+         HeadingButton {
              id: btnCancel
              text: "Cancel"
-             font.pixelSize: headingButtonFontSize
              onClicked: form.state = '';
-             anchors.verticalCenter: parent.verticalCenter
              anchors.left: parent.left;
              anchors.leftMargin: 5
          }
 
-         Text {
+         HeadingText {
              id: myText
-             font.bold: true
-             font.pixelSize: headingFontSize-3
              text: 'New Fill Up'
-             font.family: fontFamily
-             color: "white"
-             anchors.centerIn: parent
          }
 
-         GradientButton {
+         HeadingButton {
              text: "Save"
-             font.pixelSize: headingButtonFontSize
-             anchors.verticalCenter: parent.verticalCenter
              anchors.right: parent.right;
              anchors.rightMargin: 5
              width: btnCancel.width

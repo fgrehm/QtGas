@@ -30,23 +30,16 @@ Rectangle {
     GradientBar {
         id: topBar
         height: 81
-        width: appContainer.width
         anchors.horizontalCenter: appContainer.horizontalCenter
         anchors.top: appContainer.top
 
-        Text {
+        HeadingText {
             id: myText
-            font.bold: true
-            font.pixelSize: headingFontSize
             text: 'QtGas'
-            font.family: fontFamily
-            color: "white"
-            anchors.centerIn: parent
         }
 
         GradientButton {
             text: "Close"
-            font.pixelSize: headingButtonFontSize
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 5
@@ -57,7 +50,6 @@ Rectangle {
     GradientBar {
         id: bar2
         x: 0
-        width: appContainer.width
         height: 82
         anchors.horizontalCenter: appContainer.horizontalCenter
         anchors.bottom: appContainer.bottom
@@ -66,23 +58,14 @@ Rectangle {
             spacing: 30
             anchors.centerIn: parent
 
-//            GradientButton {
-//                text: "All"
-//            }
-
             GradientButton {
                 text: "Register fill up"
+                font.pixelSize: 28
                 onClicked: {                    
                     fillUpForm.resetValues();
                     fillUpForm.state = 'display';
                 }
             }
-
-//            GradientButton {
-//                id: btService
-//                text: "Service"
-//                onClicked: QtGas.newService();
-//            }
         }
     }
 

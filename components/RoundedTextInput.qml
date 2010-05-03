@@ -7,13 +7,14 @@ Rectangle {
     border.width: 1
     radius: 10
     width: 230
-    height: inputFontSize+25
+    height: fontPixelSize+25
 
     property alias label: label.text
     property alias value: displayValue.text
     property alias maximumLength: input.maximumLength
     property alias inputMask: input.inputMask
     property alias validator: input.validator
+    property int fontPixelSize: 26
 
     signal valueChanged
 
@@ -62,28 +63,24 @@ Rectangle {
         }
     }
 
-    Text {
+    StyledText {
         id: label
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 10
-        font.family: fontFamily
-        font.pixelSize: inputFontSize
-        font.bold: true
+        font.pixelSize: fontPixelSize
     }
 
-    Text {
+    StyledText {
         id: displayValue
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.rightMargin: 10
-        font.family: fontFamily
-        font.pixelSize: inputFontSize
-        font.bold: true
+        font.pixelSize: fontPixelSize
         color: "gray"
     }
 
-    TextInput {
+    StyledTextInput {
         id: input
 
         horizontalAlignment: "AlignRight"
@@ -96,9 +93,7 @@ Rectangle {
 
         anchors.verticalCenter: parent.verticalCenter
 
-        font.family: fontFamily
-        font.pixelSize: inputFontSize
-        font.bold: true
+        font.pixelSize: fontPixelSize
         visible: false
 
         Keys.onPressed: {

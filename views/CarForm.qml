@@ -17,10 +17,8 @@ Dialog {
         anchors.bottomMargin: 10
         spacing: 20
 
-        Text {
+        StyledText {
             text: "Please enter current odometer"
-            font.family: fontFamily
-            font.pixelSize: inputFontSize
             anchors.horizontalCenter: parent.horizontalCenter
         }
 

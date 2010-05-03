@@ -32,4 +32,8 @@ OTHER_FILES += \
     scripts/persistence.min.js \
     components/Dialog.qml \
     views/CarForm.qml \
-    components/ScrollListView.qml
+    components/ScrollListView.qml \
+    components/StyledText.qml \
+    components/StyledTextInput.qml \
+    components/HeadingButton.qml \
+    components/HeadingText.qml

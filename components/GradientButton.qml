@@ -31,13 +31,10 @@ Rectangle {
         onClicked: container.clicked()
     }
 
-    Text {
+    StyledText {
         id: txtItem
         text: container.text
         anchors.centerIn: container
-        font.family: fontFamily
-        font.pixelSize: buttonFontSize
-        font.bold: true
         color: "white"
     }
 }

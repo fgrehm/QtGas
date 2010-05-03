@@ -13,5 +13,9 @@
         <file>components/Dialog.qml</file>
         <file>views/CarForm.qml</file>
         <file>components/ScrollListView.qml</file>
+        <file>components/StyledText.qml</file>
+        <file>components/StyledTextInput.qml</file>
+        <file>components/HeadingButton.qml</file>
+        <file>components/HeadingText.qml</file>
     </qresource>
 </RCC>
