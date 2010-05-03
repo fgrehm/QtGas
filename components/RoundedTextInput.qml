@@ -13,6 +13,7 @@ Rectangle {
     property alias value: displayValue.text
     property alias maximumLength: input.maximumLength
     property alias inputMask: input.inputMask
+    property alias validator: input.validator
 
     signal valueChanged
 

@@ -1,8 +1,8 @@
 import Qt 4.7
 import "components"
 import "views"
-import '/scripts/persistence.min.js' as Persistence
-import '/scripts/QtGas.js' as QtGas
+import 'scripts/persistence.min.js' as Persistence
+import 'scripts/QtGas.js' as QtGas
 
 Rectangle {
     id: appContainer
@@ -94,22 +94,16 @@ Rectangle {
         id: carForm
     }
 
-    ListView {
-        id: listview1
-        clip: true
+    ScrollListView {
+        delegate: delegate
         anchors.top: topBar.bottom
         anchors.bottom: bar2.top
-        width: parent.width
         model: myModel
-        delegate: delegate
-        spacing: 0
+        width: parent.width
+    }
 
-        Rectangle {
-            color: "black"
-            opacity: 0.4; anchors.right: listview1.right; anchors.rightMargin:2; width: 6
-            y: listview1.visibleArea.yPosition * listview1.height
-            height: listview1.visibleArea.heightRatio * listview1.height
-        }
+    ListModel {
+        id: myModel
     }
 
     Component {
@@ -125,7 +119,7 @@ Rectangle {
              spacing: 5
 
              Image {
-                 source: "qrc:/images/"+type+".png"
+                 source: "images/"+type+".png"
                  width: 50
                  height: 50
              }
@@ -143,19 +137,19 @@ Rectangle {
                  }
                  Row {
                      Text {
-                         text: (type == 'gas' ? units+' L' : description)
+                         text: units+' L'
                          font.pixelSize: 20
                          width: wrapper.width - 340
                          color: 'gray'
                      }
                      Text {
-                         text: (type == 'gas' ? distancePerUnit + ' Km/L' : '')
+                         text: distancePerUnit + ' Km/L'
                          width: 140
                          font.pixelSize: 20
                          color: 'gray'
                      }
                      Text {
-                         text: (type == 'gas' ? costPerUnit + ' $/L' : '')
+                         text: costPerUnit + ' $/L'
                          font.pixelSize: 20
                          color: 'gray'
                      }
@@ -163,9 +157,5 @@ Rectangle {
              }
          }
      }
-    }
-
-    ListModel {
-        id: myModel
     }
 }

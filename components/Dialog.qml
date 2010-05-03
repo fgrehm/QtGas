@@ -3,6 +3,7 @@ import Qt 4.7
 Item {
     id: dialog
 
+    z: parent.z + 3
     property alias contentWidth: content.width
     property alias contentHeight: content.height
     default property alias chidren: content.children
@@ -35,11 +36,14 @@ Item {
 
     Rectangle {
         id: content
-        width: 200
-        height: 200
+        width: contentWidth
+        height: contentHeight
         anchors.centerIn: parent
         color: "lightyellow"
-        border.width: 1
         z: dialog.z + 1
+
+        border.width: 5
+        border.color: "#313a5d"
+        radius: 15
     }
 }

@@ -1,7 +1,7 @@
 import Qt 4.7
 import "../components"
-import '/scripts/persistence.min.js' as Persistence
-import '/scripts/QtGas.js' as QtGas
+import '../scripts/persistence.min.js' as Persistence
+import '../scripts/QtGas.js' as QtGas
 
 Rectangle {
     id: form
@@ -44,6 +44,7 @@ Rectangle {
          anchors.top: parent.top
 
          GradientButton {
+             id: btnCancel
              text: "Cancel"
              font.pixelSize: headingButtonFontSize
              onClicked: form.state = '';
@@ -55,7 +56,7 @@ Rectangle {
          Text {
              id: myText
              font.bold: true
-             font.pixelSize: headingFontSize
+             font.pixelSize: headingFontSize-3
              text: 'New Fill Up'
              font.family: fontFamily
              color: "white"
@@ -68,6 +69,7 @@ Rectangle {
              anchors.verticalCenter: parent.verticalCenter
              anchors.right: parent.right;
              anchors.rightMargin: 5
+             width: btnCancel.width
              onClicked: {
                  var track = QtGas.createFillUp({
                      cost: cost.floatValue(),
@@ -85,7 +87,6 @@ Rectangle {
 
      Flickable {
          anchors.top: topBar.bottom
-         anchors.topMargin: 10
 
          anchors.bottom: parent.bottom
 
@@ -98,6 +99,9 @@ Rectangle {
          Column {
              id: layout
              spacing: 25
+
+             anchors.top: parent.top
+             anchors.topMargin: 20
 
              anchors.left: parent.left
              anchors.leftMargin: 10
@@ -120,6 +124,8 @@ Rectangle {
                      if (parent.hasValue(litres))
                         distancePerUnit.value = ((odometer.floatValue() - QtGas.currentCar.odometer) / litres.floatValue()).toFixed(3);
                  }
+
+                 validator: IntValidator{}
              }
 
              RoundedTextInput {
@@ -138,6 +144,8 @@ Rectangle {
 
                      distancePerUnit.value = ((odometer.floatValue() - QtGas.currentCar.odometer) / litres.floatValue()).toFixed(3);
                  }
+
+                 validator: DoubleValidator{}
              }
 
              RoundedTextInput {
@@ -152,6 +160,8 @@ Rectangle {
                      else if (parent.hasValue(costPerLitre))
                          litres.value = (cost.floatValue() / costPerLitre.floatValue()).toFixed(3);
                  }
+
+                 validator: DoubleValidator{}
              }
 
              RoundedTextInput {
@@ -166,6 +176,8 @@ Rectangle {
                      else if (parent.hasValue(cost))
                          litres.value = (cost.floatValue() / costPerLitre.floatValue()).toFixed(3);
                  }
+
+                 validator: DoubleValidator{}
              }
 
              RoundedTextInput {

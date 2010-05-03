@@ -1,14 +1,14 @@
 import Qt 4.7
 import "../components"
-import '/scripts/persistence.min.js' as Persistence
-import '/scripts/QtGas.js' as QtGas
+import '../scripts/persistence.min.js' as Persistence
+import '../scripts/QtGas.js' as QtGas
 
 Dialog {
     id: form
     anchors.centerIn: parent
     property alias odometer: odometer.value
 
-    contentWidth: 480
+    contentWidth: 470
     contentHeight: 240
 
     Column {
@@ -33,6 +33,8 @@ Dialog {
             width: parent.width - 20
 
             maximumLength: 6
+
+            validator: IntValidator{}
         }
 
         GradientButton {

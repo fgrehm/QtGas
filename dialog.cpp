@@ -26,7 +26,13 @@ Dialog::Dialog()
     view->rootContext()->setContextProperty("headingFontSize", 40);
     view->rootContext()->setContextProperty("mainDialog", this);
 
-    view->setSource(QUrl("qrc:/QtGas.qml"));
+    // TODO: Check if this works
+//#if !defined(DEBUG)
+//    view->setSource(QUrl("qrc:/QtGas.qml"));
+//#else
+    view->setSource(QUrl("QtGas.qml"));
+//#endif
+
     view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 
 

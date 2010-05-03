@@ -9,7 +9,7 @@ QT       += core gui declarative sql
 TARGET = QtGas
 TEMPLATE = app
 
-DESTDIR = build
+#DESTDIR = build
 
 SOURCES += main.cpp \
     dialog.cpp
@@ -31,4 +31,5 @@ OTHER_FILES += \
     components/RoundedTextInput.qml \
     scripts/persistence.min.js \
     components/Dialog.qml \
-    views/CarForm.qml
+    views/CarForm.qml \
+    components/ScrollListView.qml

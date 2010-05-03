@@ -12,5 +12,6 @@
         <file>scripts/model.js</file>
         <file>components/Dialog.qml</file>
         <file>views/CarForm.qml</file>
+        <file>components/ScrollListView.qml</file>
     </qresource>
 </RCC>
