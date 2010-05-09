@@ -11,14 +11,9 @@ class Dialog : public QDialog
 
 public:
     Dialog();
-    void reactToSIP();
 
 private:
-    QRect desktopGeometry;
     QDeclarativeView *view;
-
-public slots:
-    void desktopResized(int screen);
 };
 //! [Dialog header]
 

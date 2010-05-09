@@ -9,8 +9,6 @@
 
 Dialog::Dialog()
 {
-    desktopGeometry = QApplication::desktop()->availableGeometry(0);
-
     setWindowTitle(tr("QtGas"));
 
     view = new QDeclarativeView(this);
@@ -18,7 +16,6 @@ Dialog::Dialog()
     view->engine()->setOfflineStoragePath(QDir::currentPath() + "/storage");
     view->rootContext()->setContextProperty("mainDialog", this);
 
-    // TODO: Check if this works
 #if !defined(DEBUG)
     view->setSource(QUrl("qrc:/QtGas.qml"));
 #else
@@ -37,30 +34,6 @@ Dialog::Dialog()
 
 //    connect(btn, SIGNAL(clicked()),
 //        this, SIGNAL(myDesktopResized()));
-    connect(QApplication::desktop(), SIGNAL(workAreaResized(int)),
-        this, SLOT(desktopResized(int)));
-}
-
-void Dialog::desktopResized(int screen)
-{
-    if (screen != 0)
-        return;
-    reactToSIP();
-}
-
-// TODO: Layout is not ok after closing keyboard, the main qml window goes
-//       under WM bottom bar.
-void Dialog::reactToSIP()
-{
-    QRect availableGeometry = QApplication::desktop()->availableGeometry(0);
-
-    if (desktopGeometry != availableGeometry) {
-        if (windowState() | Qt::WindowMaximized)
-            setWindowState(windowState() & ~Qt::WindowMaximized);
-
-        setGeometry(availableGeometry);
-        geometry();
-    }
-
-    desktopGeometry = availableGeometry;
+//    connect(QApplication::desktop(), SIGNAL(workAreaResized(int)),
+//        this, SLOT(desktopResized(int)));
 }

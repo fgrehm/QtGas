@@ -10,11 +10,13 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    app.setAutoSipEnabled(true);
-
     Dialog dialog;
 
-#if defined(Q_WS_S60) || defined(Q_WS_MAEMO_5) || defined(Q_WS_WINCE)
+#if defined(Q_WS_WINCE_WM)
+    app.setAutoSipEnabled(true);
+    dialog.setMaximumHeight(696);
+    dialog.showMaximized();
+#elif defined(Q_WS_MAEMO_5)
     dialog.showFullScreen();
 #else
     dialog.setFixedWidth(480);
