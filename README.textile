@@ -25,14 +25,6 @@ At the moment it was only tested on a Windows Mobile 6.5.3 WVGA phone (a hacked 
 
 Please note that I'll target touchscreen devices first and later will work on adding support for non-touchscreen ones.
 
-h2. Issue tracker
-
-"http://github.com/fgrehm/QtGas/issues":http://github.com/fgrehm/QtGas/issues
-
-h2. Roadmap
-
-"http://wiki.github.com/fgrehm/QtGas/":http://wiki.github.com/fgrehm/QtGas/
-
 h2. License
 
 (The MIT License)
